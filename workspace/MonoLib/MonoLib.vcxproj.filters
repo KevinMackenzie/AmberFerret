@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Project Files">
+      <UniqueIdentifier>{21f5b773-4107-4df0-82a4-335976214441}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\MonoLib\Project Files\MonoLib.cpp">
+      <Filter>Project Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\MonoLib\Project Files\dllmain.cpp">
+      <Filter>Project Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\MonoLib\Project Files\stdafx.cpp">
+      <Filter>Project Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\MonoLib\Project Files\MonoLib.h">
+      <Filter>Project Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\MonoLib\Project Files\targetver.h">
+      <Filter>Project Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\MonoLib\stdafx.h" />
+  </ItemGroup>
+</Project>
