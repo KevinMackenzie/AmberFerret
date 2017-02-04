@@ -166,14 +166,18 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\MonoLib\Model\BaseDocument.cpp" />
     <ClCompile Include="..\..\src\MonoLib\Project Files\dllmain.cpp" />
     <ClCompile Include="..\..\src\MonoLib\Project Files\MonoLib.cpp" />
     <ClCompile Include="..\..\src\MonoLib\Project Files\stdafx.cpp" />
+    <ClCompile Include="..\..\src\MonoLib\Serialization\XMLSerializer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\MonoLib\Interfaces\Interfaces.h" />
+    <ClInclude Include="..\..\src\MonoLib\Model\BaseDocument.h" />
     <ClInclude Include="..\..\src\MonoLib\Project Files\MonoLib.h" />
     <ClInclude Include="..\..\src\MonoLib\Project Files\targetver.h" />
+    <ClInclude Include="..\..\src\MonoLib\Serialization\XMLSerializer.h" />
     <ClInclude Include="..\..\src\MonoLib\stdafx.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

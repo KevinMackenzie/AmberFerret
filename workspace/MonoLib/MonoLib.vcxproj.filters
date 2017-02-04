@@ -10,6 +10,12 @@
     <Filter Include="Interfaces">
       <UniqueIdentifier>{6cbf7490-a4be-40b0-b9c2-7b74bdbddddc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Model">
+      <UniqueIdentifier>{f8ffe730-b075-40b4-af15-4b51e08368f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Serialization">
+      <UniqueIdentifier>{b80c1863-ab02-4c2c-975d-f5e66198df03}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\MonoLib\Project Files\MonoLib.cpp">
@@ -20,6 +26,12 @@
     </ClCompile>
     <ClCompile Include="..\..\src\MonoLib\Project Files\stdafx.cpp">
       <Filter>Project Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\MonoLib\Serialization\XMLSerializer.cpp">
+      <Filter>Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\MonoLib\Model\BaseDocument.cpp">
+      <Filter>Model</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -32,6 +44,12 @@
     <ClInclude Include="..\..\src\MonoLib\stdafx.h" />
     <ClInclude Include="..\..\src\MonoLib\Interfaces\Interfaces.h">
       <Filter>Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\MonoLib\Serialization\XMLSerializer.h">
+      <Filter>Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\MonoLib\Model\BaseDocument.h">
+      <Filter>Model</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
