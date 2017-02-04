@@ -7,6 +7,9 @@
     <Filter Include="Project Files">
       <UniqueIdentifier>{21f5b773-4107-4df0-82a4-335976214441}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Interfaces">
+      <UniqueIdentifier>{6cbf7490-a4be-40b0-b9c2-7b74bdbddddc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\MonoLib\Project Files\MonoLib.cpp">
@@ -27,5 +30,8 @@
       <Filter>Project Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\MonoLib\stdafx.h" />
+    <ClInclude Include="..\..\src\MonoLib\Interfaces\Interfaces.h">
+      <Filter>Interfaces</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

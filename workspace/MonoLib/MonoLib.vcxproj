@@ -171,6 +171,7 @@
     <ClCompile Include="..\..\src\MonoLib\Project Files\stdafx.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\MonoLib\Interfaces\Interfaces.h" />
     <ClInclude Include="..\..\src\MonoLib\Project Files\MonoLib.h" />
     <ClInclude Include="..\..\src\MonoLib\Project Files\targetver.h" />
     <ClInclude Include="..\..\src\MonoLib\stdafx.h" />
