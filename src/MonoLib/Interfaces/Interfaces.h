@@ -35,7 +35,8 @@ namespace MonoLib
 	class ISerializerBase
 	{
 	public:
-		virtual SerializationTargetPtr Serialize(const ModelPtr& modelInstance) const = 0;
+		virtual SerializationTargetPtr SerializeBase(const ModelPtr& modelInstance) const = 0;
+		virtual ModelPtr DeserializeBase(const ByteArray& data) const = 0;
 	};
 
 
@@ -43,13 +44,19 @@ namespace MonoLib
 	class ISerializer : ISerializerBase
 	{
 	public:
-		virtual SerializationTargetPtr Serialize(const ModelPtr& modelInstance) const override sealed
+		virtual SerializationTargetPtr SerializeBase(const ModelPtr& modelInstance) const override sealed
 		{
 			return Serialize(std::dynamic_pointer_cast<ModelTypePtr, ModelPtr>(modelInstance));
 		}
+		virtual ModelPtr DeserializeBase(const ByteArray& data) const override sealed
+		{
+			return Deserialize(data);
+		}
+
 
 		using ModelTypePtr = std::shared_ptr<ModelTypeName>;
 		virtual SerializationTargetPtr Serialize(const ModelTypePtr& modelInstance) const = 0;
+		virtual ModelTypePtr Deserialize(const ByteArray& data) const = 0;
 	};
 
 
@@ -60,14 +67,47 @@ namespace MonoLib
 
 	*/
 
+	//This would hold stuff like the scene graph
 	class IViewModel
 	{
 	public:
-		virtual void Update() = 0;//TODO: what parameters?
+		virtual void ReloadModel(const ModelPtr& modelInstance) = 0;//TODO: what parameters?
 	};
 	using ViewModelPtr = std::shared_ptr<IViewModel>;
 
 
+
+	/*
+	
+	View Classes
+	
+	
+	*/
+
+	//this would interact with OpenGL/DirectX to buffer the ViewModel data and render it
+	class IView
+	{
+	public:
+		virtual void Init(const ViewModelPtr& vm) = 0;
+		virtual void ShowOutput(double timeNow) = 0;
+		virtual void ProcessMessages() = 0;
+	};
+
+	class IResourceData
+	{
+	};
+	using ResourceDataPtr = std::shared_ptr<IResourceData>;
+
+	class IResourceLoader
+	{
+	public:
+		virtual std::string GetPattern() const = 0;
+		virtual bool UseRawData() const = 0;
+		virtual bool LoadResource(ResourceDataPtr& targetData, const ByteArray& rawData) const = 0;
+
+		//how big the resource be once in memory
+		virtual int GetLoadedSize(const ByteArray& rawData) const = 0;
+	};
 
 	/*
 
