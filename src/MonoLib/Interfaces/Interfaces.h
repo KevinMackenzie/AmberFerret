@@ -25,38 +25,44 @@ namespace MonoLib
 		virtual void GetBytes(ByteArray& data) const = 0;
 	};
 	using SerializationTargetPtr = std::shared_ptr<ISerializationTarget>;
-
-	class ITextSerializationTarget : ISerializationTarget
+	
+	class IDeserializationSource
 	{
 	public:
-		virtual void GetText(std::string& data) const = 0;
+		virtual void SetBytes(const ByteArray& data) const = 0;
 	};
+	using DeserializationSourcePtr = std::shared_ptr<IDeserializationSource>;
 	
+	//TODO: is this helpful? - maybe
 	class ISerializerBase
 	{
 	public:
-		virtual SerializationTargetPtr SerializeBase(const ModelPtr& modelInstance) const = 0;
-		virtual ModelPtr DeserializeBase(const ByteArray& data) const = 0;
+		virtual bool SerializeBase(const ModelPtr& modelInstance, SerializationTargetPtr& target) const = 0;
+		virtual bool DeserializeBase(ModelPtr& modelInstance, const DeserializationSourcePtr& source) const = 0;
 	};
 
 
 	template<typename ModelTypeName>
 	class ISerializer : ISerializerBase
 	{
+		//disable the class if the ModelTypeName is not a child of Model
+		template<typename U = ModelTypeName>
+		typename std::enable_if_t<!std::is_base_of_v<IModel, U>>
+		ISerializer() {}
 	public:
-		virtual SerializationTargetPtr SerializeBase(const ModelPtr& modelInstance) const override sealed
+		virtual bool SerializeBase(const ModelPtr& modelInstance, SerializationTargetPtr& target) const override sealed
 		{
-			return Serialize(std::dynamic_pointer_cast<ModelTypePtr, ModelPtr>(modelInstance));
+			return Serialize(std::dynamic_pointer_cast<ModelTypePtr, ModelPtr>(modelInstance), target);
 		}
-		virtual ModelPtr DeserializeBase(const ByteArray& data) const override sealed
+		virtual bool DeserializeBase(ModelPtr& modelInstance, const DeserializationSourcePtr& source) const override sealed
 		{
-			return Deserialize(data);
+			return Deserialize(std::dynamic_pointer_cast<ModelTypePtr, ModelPtr>(modelInstance), source);
 		}
 
 
 		using ModelTypePtr = std::shared_ptr<ModelTypeName>;
-		virtual SerializationTargetPtr Serialize(const ModelTypePtr& modelInstance) const = 0;
-		virtual ModelTypePtr Deserialize(const ByteArray& data) const = 0;
+		virtual bool Serialize(const ModelTypePtr& modelInstance, SerializationTargetPtr& target) const = 0;
+		virtual bool Deserialize(ModelTypePtr& modelInstance, const DeserializationSourcePtr& source) const = 0;
 	};
 
 
