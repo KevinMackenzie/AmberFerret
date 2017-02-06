@@ -16,6 +16,9 @@
     <Filter Include="Serialization">
       <UniqueIdentifier>{b80c1863-ab02-4c2c-975d-f5e66198df03}</UniqueIdentifier>
     </Filter>
+    <Filter Include="3rdParty">
+      <UniqueIdentifier>{bcec4c09-11ec-4786-ac69-d77a3024a713}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\MonoLib\Project Files\MonoLib.cpp">
@@ -32,6 +35,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\MonoLib\Model\BaseDocument.cpp">
       <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\MonoLib\3rdParty\TinyXML2.cpp">
+      <Filter>3rdParty</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -50,6 +56,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\MonoLib\Model\BaseDocument.h">
       <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\MonoLib\3rdParty\TinyXML2.h">
+      <Filter>3rdParty</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
